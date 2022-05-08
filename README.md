@@ -7,8 +7,14 @@ network (PSMNet) is used to exploit global context information in stereo matchin
 This repository contains the code (in PyTorch) for ["Pyramid Stereo Matching Network" paper](https://arxiv.org/pdf/1803.08669.pdf ) (CVPR 2018) by Jia-Ren Chang and Yong-Sheng Chen. 
 
 Python files are organized as following:
+
 1- preprocessing.py ---> responsible for processing images (normalization and augmentation)
+
 2- data_loader.py  ---> -responsible for loading dataset and splitting it into tain-validation-test sets, also it feeds the images into preprocessing pipeline if needed.
-                        - Map-style dataset class is created to get fed into TORCH.UTILS later on
+                        - Map-style dataset class is created to get fed into TORCH.UTILS later on.
                       
-3-building_blocks.py 
+3-building_blocks.py---> contains building blocks to be used on to create the full model (e.g. Hourglass and basic block)
+
+4-feature_estimation.py ---> contains the CNN that extracts feature before the PMS model
+
+5-model.py ---> calls building_blocks.py and feature_estimation.py to build the whole model
